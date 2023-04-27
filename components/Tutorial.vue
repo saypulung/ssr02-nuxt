@@ -17,6 +17,58 @@
           To get started, remove <code class="bg-gray-100 text-sm p-1 rounded border">components/Tutorial.vue</code> and start coding in <code class="bg-gray-100 text-sm p-1 rounded border">pages/index.vue</code>. Have fun!
         </p>
       </div>
+      <div class="mt-8 bg-white overflow-auto shadow sm:rounded-lg p-6">
+        <h3>Users</h3>
+        <b-list-group>
+          <b-list-group-item
+            v-for="user in parties.users"
+            :key="user.id"
+            :href="`/user/${user.slug}`"
+          >
+            {{ user.name }}
+          </b-list-group-item>
+        </b-list-group>
+        <h3>Institutes</h3>
+        <b-list-group>
+          <b-list-group-item
+            v-for="institute in parties.institutes"
+            :key="institute.id"
+            :href="`/institute/${institute.slug}`"
+          >
+            {{ institute.name }}
+          </b-list-group-item>
+        </b-list-group>
+        <h3>Events</h3>
+        <b-list-group>
+          <b-list-group-item
+            v-for="event in parties.events"
+            :key="event.id"
+            :href="`/event/${event.slug}`"
+          >
+            {{ event.name }}
+          </b-list-group-item>
+        </b-list-group>
+        <h3>Organisations</h3>
+        <b-list-group>
+          <b-list-group-item
+            v-for="organisation in parties.organisations"
+            :key="organisation.id"
+            :href="`/organisation/${organisation.slug}`"
+          >
+            {{ organisation.name }}
+          </b-list-group-item>
+        </b-list-group>
+        <h3>Courses</h3>
+        <b-list-group>
+          <b-list-group-item
+            v-for="course in parties.courses"
+            :key="course.id"
+            :href="`/course/${course.slug}`"
+          >
+            {{ course.name }}
+          </b-list-group-item>
+        </b-list-group>
+      </div>
       <div class="flex justify-center pt-4 space-x-2">
         <a href="https://github.com/nuxt/nuxt.js" target="_blank"><svg
           class="w-6 h-6 text-gray-600 hover:text-gray-800 button--github"
@@ -47,6 +99,31 @@
 
 <script>
 export default {
-  name: 'NuxtTutorial'
+  name: 'NuxtTutorial',
+  props: {
+    parties: {
+      type: Object,
+      required: false,
+      default: {
+        users: [],
+        institutes: [],
+        events: [],
+        organisations: [],
+        courses: [],
+      },
+    },
+  },
+  created() {
+    console.log('hook created')
+    this.nganu()
+  },
+  mounted() {
+    console.log('hook mounted')
+  },
+  methods: {
+    nganu() {
+      console.log('nganu')
+    }
+  }
 }
 </script>

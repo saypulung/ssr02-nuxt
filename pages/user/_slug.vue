@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>{{ user.name }}</div>
-    <div>{{ user.description }}</div>
+    <div>{{ user.bio }}</div>
   </div>
 </template>
 <script>
@@ -25,7 +25,7 @@ export default {
     console.log(context.params.slug)
     try {
       const response=await context.$axios.get(`parties/user/${context.params.slug}`)
-      console.log(response)
+      // console.log(response)
       return {
         user: response.data.data
       }
@@ -34,5 +34,8 @@ export default {
       context.error({ statusCode: 404, message: 'User not found' })
     }
   },
+  mounted() {
+    console.log('user di mount')
+  }
 }
 </script>

@@ -1,11 +1,26 @@
 <template>
-  <Tutorial />
+  <Tutorial :parties="parties"/>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'IndexPage'
-})
+<script>
+export default {
+  name: 'IndexPage',
+  data: () => ({
+    parties: {
+      users: [],
+      organisations: [],
+      events: [],
+      institutes: [],
+      courses: [],
+    },
+  }),
+  async asyncData(context) {
+    const response = await context.$axios.get('parties');
+    if (response) {
+      return {
+        parties: response.data
+      }
+    }
+  }
+}
 </script>
