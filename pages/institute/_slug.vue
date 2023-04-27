@@ -22,7 +22,6 @@ export default {
     console.log(context.params.slug)
     try {
       const response=await context.$axios.get(`parties/institute/${context.params.slug}`)
-      console.log(response)
       return {
         institute: response.data.data
       }

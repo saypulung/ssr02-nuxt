@@ -2,10 +2,13 @@
   <div>
     <div>{{ user.name }}</div>
     <div>{{ user.bio }}</div>
+    <random/>
   </div>
 </template>
 <script>
+import Random from '@/components/Random'
 export default {
+  components: { Random },
   data: () => ({
     user: {}
   }),

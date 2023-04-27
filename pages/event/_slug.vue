@@ -1,8 +1,13 @@
 <template>
-  <div>event</div>
+  <div>
+    {{ event.name }}
+    <random/>
+  </div>
 </template>
 <script>
+import Random from '@/components/Random'
 export default {
+  components: { Random },
   data: () => ({
     event: {}
   }),
@@ -22,7 +27,6 @@ export default {
     console.log(context.params.slug)
     try {
       const response=await context.$axios.get(`parties/event/${context.params.slug}`)
-      console.log(response)
       return {
         event: response.data.data
       }
