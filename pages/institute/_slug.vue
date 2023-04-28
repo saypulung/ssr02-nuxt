@@ -27,7 +27,7 @@ export default {
       }
     } catch(e) {
       console.log(e)
-      context.error({ statusCode: 404, message: 'User not found' })
+      context.error({ statusCode: 404, message: 'Institute not found' })
     }
   },
 }
